@@ -1,3 +1,3 @@
 ﻿  main.cpp
-D:\C++\Network\Network-Client\Network-Client\main.cpp(42,46): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\C++\Network\Network-Client\Network-Client\main.cpp(45,49): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   Network-Client.vcxproj -> D:\C++\Network\Network-Client\x64\Debug\Network-Client.exe

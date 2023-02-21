@@ -7,9 +7,9 @@ int main()
 	WSADATA wsa_data; //data struct
 	WSAStartup(MAKEWORD(2, 2), &wsa_data); //initialize winsock lib.
 
-	printf("Enter port: ");
-	unsigned short port;
-	scanf_s("%hu", &port); //%hu = reads half unsigned (unsigned short).
+	//printf("Enter port: ");
+	unsigned short port = 49;
+	//scanf_s("%hu", &port); //%hu = reads half unsigned (unsigned short).
 
 	//an unsiged int that acts as a handle to the socket.
 	SOCKET sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); //internet commuicating using pct protocol. 
@@ -37,17 +37,11 @@ int main()
 		printf("CONNECTION FAILED! Error: %d\n", WSAGetLastError());
 	}
 
-	//send data
-	static const char* my_messege = "CLIENT CONNECTED!";
-	send(sock, my_messege, strlen(my_messege), 0);
+	while (true)
+	{
+		char send_buffer[1024];
+		gets_s(send_buffer, 1024);//secure read to avoid reading more than biffer size.
 
-
-	//recv data
-	char buffer[1024];
-	int recv_size = recv(sock, buffer, 1024, 0); //client waits for msg due to recv.
-	buffer[recv_size] = 0;
-
-	printf("Message received: (%s)\n", buffer);
-
-	return 0;
+		send(sock, send_buffer, strlen(send_buffer), 0); //send to server
+	}
 }
